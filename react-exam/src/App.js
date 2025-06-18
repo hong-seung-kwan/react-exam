@@ -17,7 +17,7 @@ function App() {
     setList(list.filter(lists => lists.id !== item.id))
   }
   let price = 0;
-  const totalPrice = list.forEach((item) => {
+  list.forEach((item) => {
     if (item.type === "수입") {
       price = price + Number(item.content)
     } else if (item.type === "지출") {
