@@ -7,7 +7,6 @@ function App() {
   const [input, setInput] = useState(0)
   const [nextId, setNextId] = useState(1)
 
-
   function add() {
     setList([...list, { id: nextId, type: radio, content: input }])
     setInput(0)
@@ -35,25 +34,22 @@ function App() {
   return (
     <div className="App">
       <h2>가계부</h2>
-      <form>
-        <div> 
-          수입<input type="radio" value="수입" name="type" onChange={radioChange} />
-          지출<input type="radio" value="지출" name="type" onChange={radioChange} />
-        </div>
-        <div>
-          <span>금액</span><input type="text" value={input} onChange={money}></input><button onClick={(event) => {
-            event.preventDefault()
-            add()
-          }}>등록</button>
-        </div>
-      </form>
+
+      <div>
+        수입<input type="radio" value="수입" name="type" onChange={radioChange} />
+        지출<input type="radio" value="지출" name="type" onChange={radioChange} />
+      </div>
+      <div>
+        <span>금액</span><input type="text" value={input} onChange={money}></input>
+        <button onClick={add}>등록</button>
+      </div>
+
       <div>
         <h2>총금액: {price}</h2>
         <ul>
           {list.map((item => <li key={item.id}>({item.type}){item.content} <button onClick={() => { remove(item) }}>삭제</button></li>))}
         </ul>
       </div>
-
     </div>
   );
 }
